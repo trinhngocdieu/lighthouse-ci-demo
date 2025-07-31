@@ -1,5 +1,5 @@
 name: CI
-on: [push]
+on: [push, pull_request]
 jobs:
   lhci:
     name: Lighthouse
@@ -18,3 +18,9 @@ jobs:
         run: |
           npm install -g @lhci/cli@0.15.x
           lhci autorun
+      - name: Upload Lighthouse results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: lighthouse-results
+          path: .lighthouseci/
