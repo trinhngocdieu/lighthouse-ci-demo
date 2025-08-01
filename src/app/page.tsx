@@ -3,7 +3,13 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 py-2 rounded">
+        Skip to main content
+      </a>
+      <header className="sr-only">
+        <h1>Lighthouse CI Demo</h1>
+      </header>
+      <main id="main-content" className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start" role="main">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -11,26 +17,37 @@ export default function Home() {
           width={180}
           height={38}
           priority
+          aria-label="Next.js logo"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+        <h1 className="text-2xl font-bold text-center sm:text-left">
+          Welcome to Lighthouse CI Demo
+        </h1>
+        <section aria-labelledby="getting-started" role="region">
+          <h3 id="getting-started" className="sr-only">Getting Started</h3>
+          <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left" role="list">
+            <li className="mb-2 tracking-[-.01em]" role="listitem">
+              Get started by editing{" "}
+              <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
+                src/app/page.tsx
+              </code>
+              .
+            </li>
+            <li className="tracking-[-.01em]" role="listitem">
+              Save and see your changes instantly.
+            </li>
+          </ol>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+        <section aria-labelledby="actions" role="region">
+          <h3 id="actions" className="sr-only">Actions</h3>
+          <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Deploy to Vercel"
+            role="button"
           >
             <Image
               className="dark:invert"
@@ -46,17 +63,23 @@ export default function Home() {
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Read Next.js documentation"
+            role="button"
           >
             Read our docs
           </a>
         </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center" role="contentinfo">
+        <nav aria-label="Footer navigation" role="navigation">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Learn Next.js"
+          role="link"
         >
           <Image
             aria-hidden
@@ -72,6 +95,8 @@ export default function Home() {
           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="View Next.js examples"
+          role="link"
         >
           <Image
             aria-hidden
@@ -87,6 +112,8 @@ export default function Home() {
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Visit Next.js website"
+          role="link"
         >
           <Image
             aria-hidden
@@ -97,6 +124,7 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
+        </nav>
       </footer>
     </div>
   );
